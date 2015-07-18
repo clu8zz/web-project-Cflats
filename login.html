@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+    <link rel="shortcut icon" href="resources/favicon2.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/bootstrap.css" media="screen" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+	 <script type="text/javascript" src="js/jquery.js"></script> 
+
+	 <script type="text/javascript" src="js/flats.js"></script> 
+
+
+    
+		<title>Login</title>
+	</head>
+	<body>
+	<center>
+	<div class="container">
+
+		
+	<div style="background-image: url('logo.png'); height: 200px; width:900px;">
+	<br/>
+	<form id='form' class="login" action='login.php' method="post">
+				<fieldset>
+				<span id="signin">Sign in</span><br/><span id="signin-1">to continue to campus flats</span> 
+					<input type="text" placeholder="username" class="field" name="username">
+					<br/>
+					
+						<input type="password" placeholder="password"  class="field" name="password">
+						<br/>
+						<input type="submit" class="button" value="Submit">
+						<br/>
+						
+						<a href="#" id="leftwriting">forgot password?</a>       
+          <a href="register" id="rightwriting">Create Account</a>
+						<br/>
+
+				</fieldset>
+	</form>
+	
+
+	</div>
+
+
+	</div>
+
+		</center>
+<script type="text/javascript">
+	$("form.login").on('submit',function(){
+	
+	
+	var component=$(this);
+	var url=component.attr('action'),
+	 type=component.attr('method'),
+	data={};
+	
+	component.find('[name]').each(function(index, value)
+	{
+		var component=$(this);
+	 var name=component.attr('name'),
+		value=component.val();
+
+		data[name]=value;
+		console.log(url);
+	});
+
+	$.ajax({
+		url:url,
+		type:type,
+		data:data,
+		success: function(response){
+	     location.href = "https://campusflats-hevongordon.c9.io/cflats/campus-flats/RentersWeb"
+	 	
+		}
+	});
+	return false;
+});
+</script>
+
+	 
+	</body>
+	</html>
