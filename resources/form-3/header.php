@@ -13,8 +13,8 @@
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css"/>
        
         <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css"/>
-        
-       <title></title>
+        <title>..title..</title>
+      
    </head> 
        
      

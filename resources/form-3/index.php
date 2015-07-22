@@ -1,6 +1,12 @@
 <?php
+ob_start();
 include 'header.php';
-$price='0.00';
+$buffer=ob_get_contents();
+ob_end_clean();
+$buffer=str_replace("..title..","Campus Flats",$buffer);
+echo $buffer;
+
+
 $servername = getenv('IP');
          $name = getenv('C9_USER');
          $dbpassword = "";
@@ -17,9 +23,43 @@ $servername = getenv('IP');
         die("Connection failed: " . $db->connect_error);
         
          } 
+         $x=rand(0,2);
+         $y=rand(5,7);
          
+       $sql = "SELECT location,price,single_shared,telephone,uniqueid FROM `flatinfo`";
+         #real sql $sql = "SELECT location,price,single_shared,telephone,uniqueid FROM `flatinfo` WHERE 1 LIMIT $x,$y ";
+        $query=$db->query($sql);
+        $count=0;
+        $location=[];
+        $price=[];
+        $single_shared=[];
+        $telephone=[];
+        $uniqueid=[];
+       while($row=mysqli_fetch_row($query))
+       {
+           $location[$count]=$row[0];
+           $price[$count]=$row[1];
+           $single_shared[$count]=$row[2];
+           $telephone[$count]=$row[3];
+           $uniqueid[$count]=$row[4];
+           $count++;
+       }
+       $img_count=0;
+       $images_holder=[];
        
-
+       while($img_count<3)
+       {
+             $image_fetch= "SELECT image FROM `images` WHERE uniqueid='$uniqueid[$img_count]'";
+             $image_query=$db->query($image_fetch);
+             $fetched=mysqli_fetch_row($image_query);
+             $images_holder[$img_count]=$fetched[0];
+             $img_count++;
+             
+        
+       }
+  
+       
+       
 ?>
 <!DOCTYPE html>
 <html>
@@ -48,6 +88,7 @@ $servername = getenv('IP');
      <div class="row container-fluid">
        
         <div class=" col-lg-4"><center><span></span></center></div>
+        <form>
      <div class="col-lg-4 filter-label col-sm-3 col-xs-3"><center><span>Filter</span></center></div>
       <div class="col-lg-4"><center><span></span></center></div>
        
@@ -105,7 +146,7 @@ $servername = getenv('IP');
   </div>
   <br>
   <div class="col-lg-12 col-sm-6"> <button type="button" class="btn btn-default">Search</button></div>
-  
+  </form>
   
   
   
@@ -124,13 +165,13 @@ $servername = getenv('IP');
       
       <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-      <img src="../images/no-image.png" alt="...">
+      <img src=<?php echo "../../uploads/".$images_holder[0]?> alt="...">
       <div class="caption">
-        <h3><span class="price">$<?php echo $price?></span></h3>
-         <p><span class="titled">Location:</span></p>
+        <h3><span class="price">$<?php echo $price[0]?></span></h3>
+         <p><span class="titled">Location:<?php echo $location[0]?></span></p>
         
-         <p><span class="titled">Accomodation:</span></p>
-         <p><span class="titled">Telephone:</span></p>
+         <p><span class="titled">Accomodation:<?php echo $single_shared[0]?></span></p>
+         <p><span class="titled">Telephone: <?php echo $telephone[0]?></span></p>
         
        
       </div>
@@ -140,13 +181,13 @@ $servername = getenv('IP');
   
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-      <img src="../images/no-image.png" alt="...">
+      <img src=<?php echo "../../uploads/".$images_holder[1]?>  alt="...">
       <div class="caption">
-         <h3><span class="price">$<?php echo $price?></span></h3>
-        <p><span class="titled">Location:</span></p>
+         <h3><span class="price">$<?php echo $price[1]?></span></h3>
+        <p><span class="titled">Location: <?php echo $location[1]?></span></p>
         
-         <p><span class="titled">Accomodation:</span></p>
-         <p><span class="titled">Telephone:</span></p>
+         <p><span class="titled">Accomodation: <?php echo $single_shared[1]?></span></p>
+         <p><span class="titled">Telephone:  <?php echo $telephone[1]?></span></p>
         
        
        
@@ -157,13 +198,13 @@ $servername = getenv('IP');
   
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-      <img src="../images/no-image.png" alt="...">
+      <img src=<?php echo "../../uploads/".$images_holder[2]?>  alt="...">
       <div class="caption">
-        <h3><span class="price">$<?php echo $price?></span></h3>
-        <p><span class="titled">Location:</span></p>
+        <h3><span class="price">$<?php echo $price[2]?></span></h3>
+        <p><span class="titled">Location: <?php echo $location[2]?></span></p>
         
-         <p><span class="titled">Accomodation:</span></p>
-         <p><span class="titled">Telephone:</span></p>
+         <p><span class="titled">Accomodation: <?php echo $single_shared[2]?></span></p>
+         <p><span class="titled">Telephone:  <?php echo $telephone[2]?></span></p>
         
        
        

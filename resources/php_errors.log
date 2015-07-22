@@ -571,3 +571,119 @@
 [18-Jul-2015 16:40:27 UTC] PHP Stack trace:
 [18-Jul-2015 16:40:27 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php:0
 [18-Jul-2015 16:40:27 UTC] PHP   2. mysqli_fetch_row() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php:30
+[18-Jul-2015 19:16:12 UTC] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, boolean given in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 31
+[18-Jul-2015 19:16:12 UTC] PHP Stack trace:
+[18-Jul-2015 19:16:12 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:0
+[18-Jul-2015 19:16:12 UTC] PHP   2. mysqli_fetch_row() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:31
+[18-Jul-2015 19:17:58 UTC] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, boolean given in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 31
+[18-Jul-2015 19:17:58 UTC] PHP Stack trace:
+[18-Jul-2015 19:17:58 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:0
+[18-Jul-2015 19:17:58 UTC] PHP   2. mysqli_fetch_row() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:31
+[18-Jul-2015 19:19:18 UTC] PHP Parse error:  syntax error, unexpected '$count' (T_VARIABLE), expecting ',' or ';' in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 28
+[18-Jul-2015 19:20:07 UTC] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, boolean given in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 32
+[18-Jul-2015 19:20:07 UTC] PHP Stack trace:
+[18-Jul-2015 19:20:07 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:0
+[18-Jul-2015 19:20:07 UTC] PHP   2. mysqli_fetch_row() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:32
+[18-Jul-2015 19:21:00 UTC] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, boolean given in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 32
+[18-Jul-2015 19:21:00 UTC] PHP Stack trace:
+[18-Jul-2015 19:21:00 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:0
+[18-Jul-2015 19:21:00 UTC] PHP   2. mysqli_fetch_row() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:32
+[18-Jul-2015 19:24:05 UTC] PHP Fatal error:  Call to a member function fetch_row() on a non-object in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 32
+[18-Jul-2015 19:24:05 UTC] PHP Stack trace:
+[18-Jul-2015 19:24:05 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:0
+[18-Jul-2015 19:27:14 UTC] PHP Fatal error:  Call to a member function fetch_row() on a non-object in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 32
+[18-Jul-2015 19:27:14 UTC] PHP Stack trace:
+[18-Jul-2015 19:27:14 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:0
+[18-Jul-2015 19:29:48 UTC] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, boolean given in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 31
+[18-Jul-2015 19:29:48 UTC] PHP Stack trace:
+[18-Jul-2015 19:29:48 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:0
+[18-Jul-2015 19:29:48 UTC] PHP   2. mysqli_fetch_row() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:31
+[18-Jul-2015 19:30:26 UTC] PHP Parse error:  syntax error, unexpected '$db' (T_VARIABLE), expecting ',' or ';' in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 40
+[18-Jul-2015 19:30:49 UTC] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, boolean given in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 31
+[18-Jul-2015 19:30:49 UTC] PHP Stack trace:
+[18-Jul-2015 19:30:49 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:0
+[18-Jul-2015 19:30:49 UTC] PHP   2. mysqli_fetch_row() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:31
+[18-Jul-2015 19:31:37 UTC] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, boolean given in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 31
+[18-Jul-2015 19:31:37 UTC] PHP Stack trace:
+[18-Jul-2015 19:31:37 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:0
+[18-Jul-2015 19:31:37 UTC] PHP   2. mysqli_fetch_row() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:31
+[18-Jul-2015 19:32:02 UTC] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, boolean given in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 31
+[18-Jul-2015 19:32:02 UTC] PHP Stack trace:
+[18-Jul-2015 19:32:02 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:0
+[18-Jul-2015 19:32:02 UTC] PHP   2. mysqli_fetch_row() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:31
+[18-Jul-2015 19:32:34 UTC] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, boolean given in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 31
+[18-Jul-2015 19:32:34 UTC] PHP Stack trace:
+[18-Jul-2015 19:32:34 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:0
+[18-Jul-2015 19:32:34 UTC] PHP   2. mysqli_fetch_row() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:31
+[18-Jul-2015 20:15:21 UTC] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, boolean given in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php on line 30
+[18-Jul-2015 20:15:21 UTC] PHP Stack trace:
+[18-Jul-2015 20:15:21 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php:0
+[18-Jul-2015 20:15:21 UTC] PHP   2. mysqli_fetch_row() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php:30
+[18-Jul-2015 21:24:42 UTC] PHP Warning:  mysqli::query(): Empty query in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 47
+[18-Jul-2015 21:24:42 UTC] PHP Stack trace:
+[18-Jul-2015 21:24:42 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:0
+[18-Jul-2015 21:24:42 UTC] PHP   2. mysqli->query() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:47
+[18-Jul-2015 21:24:42 UTC] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, boolean given in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 48
+[18-Jul-2015 21:24:42 UTC] PHP Stack trace:
+[18-Jul-2015 21:24:42 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:0
+[18-Jul-2015 21:24:42 UTC] PHP   2. mysqli_fetch_row() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:48
+[18-Jul-2015 21:24:42 UTC] PHP Warning:  mysqli::query(): Empty query in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 47
+[18-Jul-2015 21:24:42 UTC] PHP Stack trace:
+[18-Jul-2015 21:24:42 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:0
+[18-Jul-2015 21:24:42 UTC] PHP   2. mysqli->query() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:47
+[18-Jul-2015 21:24:42 UTC] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, boolean given in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 48
+[18-Jul-2015 21:24:42 UTC] PHP Stack trace:
+[18-Jul-2015 21:24:42 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:0
+[18-Jul-2015 21:24:42 UTC] PHP   2. mysqli_fetch_row() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:48
+[18-Jul-2015 21:24:42 UTC] PHP Warning:  mysqli::query(): Empty query in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 47
+[18-Jul-2015 21:24:42 UTC] PHP Stack trace:
+[18-Jul-2015 21:24:42 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:0
+[18-Jul-2015 21:24:42 UTC] PHP   2. mysqli->query() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:47
+[18-Jul-2015 21:24:42 UTC] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, boolean given in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 48
+[18-Jul-2015 21:24:42 UTC] PHP Stack trace:
+[18-Jul-2015 21:24:42 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:0
+[18-Jul-2015 21:24:42 UTC] PHP   2. mysqli_fetch_row() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:48
+[18-Jul-2015 21:31:16 UTC] PHP Warning:  mysqli::query(): Empty query in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 47
+[18-Jul-2015 21:31:16 UTC] PHP Stack trace:
+[18-Jul-2015 21:31:16 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:0
+[18-Jul-2015 21:31:16 UTC] PHP   2. mysqli->query() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:47
+[18-Jul-2015 21:31:16 UTC] PHP Warning:  mysqli::query(): Empty query in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 47
+[18-Jul-2015 21:31:16 UTC] PHP Stack trace:
+[18-Jul-2015 21:31:16 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:0
+[18-Jul-2015 21:31:16 UTC] PHP   2. mysqli->query() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:47
+[18-Jul-2015 21:31:16 UTC] PHP Warning:  mysqli::query(): Empty query in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 47
+[18-Jul-2015 21:31:16 UTC] PHP Stack trace:
+[18-Jul-2015 21:31:16 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:0
+[18-Jul-2015 21:31:16 UTC] PHP   2. mysqli->query() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:47
+[18-Jul-2015 21:32:26 UTC] PHP Warning:  mysqli::query(): Empty query in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 47
+[18-Jul-2015 21:32:26 UTC] PHP Stack trace:
+[18-Jul-2015 21:32:26 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:0
+[18-Jul-2015 21:32:26 UTC] PHP   2. mysqli->query() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:47
+[18-Jul-2015 21:32:26 UTC] PHP Warning:  mysqli::query(): Empty query in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 47
+[18-Jul-2015 21:32:26 UTC] PHP Stack trace:
+[18-Jul-2015 21:32:26 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:0
+[18-Jul-2015 21:32:26 UTC] PHP   2. mysqli->query() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:47
+[18-Jul-2015 21:32:26 UTC] PHP Warning:  mysqli::query(): Empty query in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php on line 47
+[18-Jul-2015 21:32:26 UTC] PHP Stack trace:
+[18-Jul-2015 21:32:26 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:0
+[18-Jul-2015 21:32:26 UTC] PHP   2. mysqli->query() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/index.php:47
+[19-Jul-2015 16:25:15 UTC] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, boolean given in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php on line 30
+[19-Jul-2015 16:25:15 UTC] PHP Stack trace:
+[19-Jul-2015 16:25:15 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php:0
+[19-Jul-2015 16:25:15 UTC] PHP   2. mysqli_fetch_row() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php:30
+[20-Jul-2015 17:24:28 UTC] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, boolean given in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php on line 30
+[20-Jul-2015 17:24:28 UTC] PHP Stack trace:
+[20-Jul-2015 17:24:28 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php:0
+[20-Jul-2015 17:24:28 UTC] PHP   2. mysqli_fetch_row() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php:30
+[20-Jul-2015 18:49:35 UTC] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, boolean given in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php on line 30
+[20-Jul-2015 18:49:35 UTC] PHP Stack trace:
+[20-Jul-2015 18:49:35 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php:0
+[20-Jul-2015 18:49:35 UTC] PHP   2. mysqli_fetch_row() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php:30
+[20-Jul-2015 21:01:03 UTC] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, boolean given in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php on line 30
+[20-Jul-2015 21:01:03 UTC] PHP Stack trace:
+[20-Jul-2015 21:01:03 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php:0
+[20-Jul-2015 21:01:03 UTC] PHP   2. mysqli_fetch_row() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php:30
+[21-Jul-2015 17:24:50 UTC] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, boolean given in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php on line 30
+[21-Jul-2015 17:24:50 UTC] PHP Stack trace:
+[21-Jul-2015 17:24:50 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php:0
+[21-Jul-2015 17:24:50 UTC] PHP   2. mysqli_fetch_row() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php:30

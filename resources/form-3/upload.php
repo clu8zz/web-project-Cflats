@@ -24,14 +24,16 @@
              $single_shared=$_POST['single-shared'];
                $sep_all=$_POST['sep-all'];
                $telephone=$_POST['telephone'];
-         $sql = "INSERT INTO `Users`.`images` (`id`, `image`) VALUES ('$id', '$image');";
-         $flatsql = "INSERT INTO `Users`.`flatinfo` (`location`, `price`, `single_shared`, `sep_all`, `ID`,`telephone`) VALUES ('$location', '$price', '$single_shared', '$sep_all', '$id','$telephone');";
+                  $uniqueid=uniqid();
+         $sql = "INSERT INTO `Users`.`images` (`id`, `image`, `uniqueid`) VALUES ('$id', '$image', '$uniqueid');";
+      $flatsql = "INSERT INTO `Users`.`flatinfo` (`location`, `price`, `single_shared`, `sep_all`, `id`, `telephone`, `uniqueid`) VALUES ('$location', '$price', '$single_shared', '$sep_all', '$id', '$telephone','$uniqueid');";
+        # $flatsql = "INSERT INTO `Users`.`flatinfo` (`location`, `price`, `single_shared`, `sep_all`, `ID`,`telephone`,`uniqueid`) VALUES ('$location', '$price', '$single_shared', '$sep_all', '$id','$telephone','$uniqueid';";
         if($db->query($sql)===TRUE && $db->query($flatsql)===TRUE ){
           echo $location;
           
         }
         else{
-          echo "insert failed";
+          echo $db->error;
         }
        
  

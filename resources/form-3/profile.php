@@ -584,6 +584,7 @@ data['sep-all']=sep_all;
 		type:type,
 		data:data,
 		success: function(response){
+		 console.log(response);
 		 $("#modal-title").html("<center><h3>Your information is being submitted! do not resubmit the form!</h3></center>")
 		 $(".progress").show();
 	  		var line = new ProgressBar.Line('.progress', {
@@ -607,12 +608,12 @@ line.animate(1.0);
 	   
 	    if($(".alert").hasClass("alert-success"))
 	    {
-	     	$(".alert").fadeIn(1000);
+	     	$(".alert-success").fadeIn(1000);
 	    }
 	    else
 	    {
 	     $(".alert").addClass("alert-success");
-	     	$(".alert").fadeIn(1000);
+	     	$(".alert-success").fadeIn(1000);
 	    }
 		}
 	});
