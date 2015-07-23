@@ -23,11 +23,11 @@ $servername = getenv('IP');
         die("Connection failed: " . $db->connect_error);
         
          } 
-         $x=rand(0,2);
-         $y=rand(5,7);
+         $x=rand(0,3);
+         $y=rand(5,10);
          
-       $sql = "SELECT location,price,single_shared,telephone,uniqueid FROM `flatinfo`";
-         #real sql $sql = "SELECT location,price,single_shared,telephone,uniqueid FROM `flatinfo` WHERE 1 LIMIT $x,$y ";
+       #$sql = "SELECT location,price,single_shared,telephone,uniqueid FROM `flatinfo`";
+       $sql = "SELECT location,price,single_shared,telephone,uniqueid FROM `flatinfo` LIMIT $x,$y";
         $query=$db->query($sql);
         $count=0;
         $location=[];
@@ -58,7 +58,9 @@ $servername = getenv('IP');
         
        }
   
-       
+       echo$x=rand(0,3);
+        
+       echo $y=rand(5,10);
        
 ?>
 <!DOCTYPE html>

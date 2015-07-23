@@ -153,7 +153,7 @@ $servername = getenv('IP');
     </div>
   </div>
    <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Telephone:</label>
+    <label for="inputPassword3" class="col-sm-2 control-label">Tele: </label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="telephone" placeholder="1876-###-####" name="telephone">
     </div>
@@ -218,7 +218,7 @@ $servername = getenv('IP');
     </div>
   </div>
    <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Telephone:</label>
+    <label for="inputPassword3" class="col-sm-2 control-label">Tele:</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="telephone" placeholder="1876-###-####" name="telephone">
     </div>
@@ -280,7 +280,7 @@ $servername = getenv('IP');
     </div>
   </div>
    <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Telephone:</label>
+    <label for="inputPassword3" class="col-sm-2 control-label">Tele:</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="telephone" placeholder="1876-###-####" name="telephone">
     </div>
