@@ -58,9 +58,7 @@ $servername = getenv('IP');
         
        }
   
-       echo$x=rand(0,3);
-        
-       echo $y=rand(5,10);
+       
        
 ?>
 <!DOCTYPE html>
@@ -90,7 +88,7 @@ $servername = getenv('IP');
      <div class="row container-fluid">
        
         <div class=" col-lg-4"><center><span></span></center></div>
-        <form>
+        <form action="search.php" method="GET">
      <div class="col-lg-4 filter-label col-sm-3 col-xs-3"><center><span>Filter</span></center></div>
       <div class="col-lg-4"><center><span></span></center></div>
        
@@ -106,7 +104,7 @@ $servername = getenv('IP');
       <span class="input-group-addon">
         $
       </span>
-      <input type="text" class="form-control" aria-label="..." placeholder="Price range">
+      <input type="text" class="form-control" placeholder="Price range" id="top-range" name="toprange">
     </div><!-- /input-group -->
   </div>
   <!-- /.col-lg-6 -->
@@ -117,15 +115,15 @@ $servername = getenv('IP');
       <span class="input-group-addon">
        $
       </span>
-      <input type="text" class="form-control" aria-label="..." placeholder="Price range">
+      <input type="text" class="form-control" placeholder="Price range" id="bottom-range" name="bottomrange">
     </div>
   </div>
   <br>
   
     <div class="col-lg-7">
-   <select>
-     <option>Single</option>
-      <option>Shared</option>
+   <select id="accomodation" name="accomodation">
+     <option value="Single">Single</option>
+      <option value="Shared">Shared</option>
       
       
    </select>
@@ -134,20 +132,21 @@ $servername = getenv('IP');
   </div>
   <br>
    <div class="col-lg-5">
-   <select>
+       
+   <select id="vicinity" name="vicinity">
      <option selected disabled>Vicinity</option>
-      <option>Gordon Town</option>
-       <option>Tavern</option>
-         <option>Elliston Flats</option>
-           <option>Golding Circle</option>
-           <option>Mona</option>
+      <option value="Gordon Town">Gordon Town</option>
+       <option value="Tavern">Tavern</option>
+         <option value="Elliston Flats">Elliston Flats</option>
+           <option value="Golding Circle">Golding Circle</option>
+           <option value="Mona">Mona</option>
       
    </select>
  
  
   </div>
   <br>
-  <div class="col-lg-12 col-sm-6"> <button type="button" class="btn btn-default">Search</button></div>
+  <div class="col-lg-12 col-sm-6"> <input type="submit" class="btn btn-default search" value="Search"></div>
   </form>
   
   
@@ -276,8 +275,38 @@ $servername = getenv('IP');
     </style>
     
     
+  <!--  
+    <script type="text/javascript">
+   
+    var to;
+   var from;
+   var vicinity;
+   var accomodation;
+    var data={};
     
-    
+ 
+        $('.search').on('click',function(){
+              from=document.getElementById('top-range').value;
+              to=document.getElementById('bottom-range').value;
+              vicinity=document.getElementById('vicinity').value;
+              accomodation=document.getElementById('accomodation').value;
+              data['top-range']=from;
+                data['bottom-range']=to;
+                 data['accomodation']=accomodation;
+                 data['vicinity']=vicinity;
+           $.ajax({
+                url:'search.php',
+                type:'POST',
+                data:data,
+                success:function(response){
+                    console.log(response);
+                }
+            })
+           
+        });
+   
+        
+    </script>-->
     
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script>
@@ -380,4 +409,5 @@ google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 </html>
 <?php
+echo $_GET['bottomrange'];
 ?>

@@ -130,6 +130,16 @@ $servername = getenv('IP');
 	    </div>
 	    
 	    
+<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample" id="listings">
+  Current Listings
+</button>
+<br>
+<div class="collapse" id="collapseExample">
+  <div class="well">
+  hello this is some text
+  </div>
+</div>
+
 	    <div class="row">
               
              <!-- <div class="col-lg-3 col-md-11 col-xs-11">
@@ -353,6 +363,15 @@ $servername = getenv('IP');
        
         
 <style type="text/css">
+#listings{
+ color:white;
+ background-color:#191919;
+ padding:12px;
+  font-family: 'Lora', serif;
+  font-size:15px;
+  margin-bottom:6px;
+}
+
 .info{
  padding:5px;
 }

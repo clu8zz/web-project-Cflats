@@ -697,3 +697,7 @@
 [23-Jul-2015 20:59:12 UTC] PHP Stack trace:
 [23-Jul-2015 20:59:12 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php:0
 [23-Jul-2015 20:59:12 UTC] PHP   2. mysqli_fetch_row() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php:30
+[24-Jul-2015 17:47:50 UTC] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, boolean given in /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php on line 30
+[24-Jul-2015 17:47:50 UTC] PHP Stack trace:
+[24-Jul-2015 17:47:50 UTC] PHP   1. {main}() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php:0
+[24-Jul-2015 17:47:50 UTC] PHP   2. mysqli_fetch_row() /home/ubuntu/workspace/cflats/campus-flats/RentersWeb/resources/form-3/profile.php:30
