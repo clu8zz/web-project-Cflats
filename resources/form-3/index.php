@@ -81,14 +81,16 @@ $servername = getenv('IP');
     <body>
       
     <div class="content" id="map-canvas"></div>
-   
+    </div class="container">
+              <div class="alert alert-warning" role="alert" id="error"><h3>Ooops! some data is missing!</h3> </div>
+    </div>   
   <div class="filter-body">
     <br>
     <div class="container">
      <div class="row container-fluid">
        
         <div class=" col-lg-4"><center><span></span></center></div>
-        <form action="search.php" method="GET">
+        <form action="search.php" method="GET" class="submitter">
      <div class="col-lg-4 filter-label col-sm-3 col-xs-3"><center><span>Filter</span></center></div>
       <div class="col-lg-4"><center><span></span></center></div>
        
@@ -218,6 +220,9 @@ $servername = getenv('IP');
    
   
     <style type="text/css">
+    .alert{
+        display:none;
+    }
  .thumbnail>a>img{
  height:200px;
  width:300px;
@@ -275,38 +280,15 @@ $servername = getenv('IP');
     </style>
     
     
-  <!--  
+   
     <script type="text/javascript">
    
-    var to;
-   var from;
-   var vicinity;
-   var accomodation;
-    var data={};
-    
- 
-        $('.search').on('click',function(){
-              from=document.getElementById('top-range').value;
-              to=document.getElementById('bottom-range').value;
-              vicinity=document.getElementById('vicinity').value;
-              accomodation=document.getElementById('accomodation').value;
-              data['top-range']=from;
-                data['bottom-range']=to;
-                 data['accomodation']=accomodation;
-                 data['vicinity']=vicinity;
-           $.ajax({
-                url:'search.php',
-                type:'POST',
-                data:data,
-                success:function(response){
-                    console.log(response);
-                }
-            })
-           
-        });
-   
+   $("form.submitter").on('submit',function(e){
+    var top=document.getElementById('top-range').value;
+    console.log(top);
+   });
         
-    </script>-->
+    </script>
     
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script>

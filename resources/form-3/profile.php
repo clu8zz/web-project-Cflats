@@ -366,10 +366,12 @@ $servername = getenv('IP');
 #listings{
  color:white;
  background-color:#191919;
- padding:12px;
+ padding:6px;
   font-family: 'Lora', serif;
   font-size:15px;
   margin-bottom:6px;
+  border-radius:15px;
+  outline:none;
 }
 
 .info{
@@ -455,13 +457,9 @@ function initialize() {
 
 
 
-  google.maps.event.addListener(marker, 'click', function() {
-    map.setZoom(8);
-    map.setCenter(marker.getPosition());
-  });
 
   //Adds a marker at the center of the map.
-  addMarker(haightAshbury);
+  //addMarker(haightAshbury);
   
 }
 
@@ -473,7 +471,9 @@ clearMarkers();
   var marker = new google.maps.Marker({
     position: location,
     map: map,
-    icon:image
+    icon:image,
+    draggable:true
+    
   });
   google.maps.event.addListener(marker, 'click', function() {
     map.setZoom(10);
@@ -481,9 +481,9 @@ clearMarkers();
   });
 
   markers.push(marker);
-  coords["lat"]=marker.position["A"];
-  coords["long"]=marker.position["F"];
- 
+  coords["lat"]=marker.getPosition().lat();
+  coords["long"]=marker.getPosition().lng();
+
   
 }
 $("#coords").on('click',function(){
@@ -492,7 +492,7 @@ $("#coords").on('click',function(){
   type:"POST",
   data:coords,
   success:function(response){
-   console.log(response);
+  
    if(response==-1)
    {
     $(".alert-info").removeClass("alert-info")
@@ -500,6 +500,8 @@ $("#coords").on('click',function(){
     
     $(".info").html("<center>please select your location first</center>");
     $(".info").show();
+    console.log(coords['lat']);
+     console.log(coords['long']);
    }
    else if(response==1)
    {
@@ -507,6 +509,7 @@ $("#coords").on('click',function(){
      $(".info").removeClass("alert-danger")
      $(".alert-info").html("<center>The location of your home has been saved!</center>");
       $(".alert-info").show();
+     
    }
   }
  });
