@@ -298,7 +298,8 @@ $servername = getenv('IP');
 var map;
 var markers = [];
 var coordsLat=[],coordsLong=[];
-var x=0;
+var inn=0;
+
 
 function initialize() {
   var pos = new google.maps.LatLng(18.0104288,-76.741323);
@@ -321,29 +322,38 @@ function initialize() {
 $(document).ready(function(){
     setTimeout(function(){
     addMarker(coordsLat,coordsLong);
-       setAllMap(map);
+    setAllMap(map);
+      
     },1000)
-})
+});
   // Adds a marker at the center of the map.
 
 }
 
 var image="../images/testmarkr.png"
+
 // Add a marker to the map and push to the array.
+
 function addMarker(coordsLat,coordsLong) {
    
    
    for(var i=0;i<coordsLat.length;i++)
    {
+   
     var location=new google.maps.LatLng(coordsLat[i],coordsLong[i]);
     var marker = new google.maps.Marker({
     position: location,
     map: map,
-    icon:image
+    infowindow:new google.maps.InfoWindow({content:""+i})
+   
+      
   });
   
-  markers.push(marker); 
-  x++;
+     markers.push(marker); 
+     markers[i].addListener('click',function(){
+         this.infowindow.open(map,this);
+     })
+ 
    }
  
 

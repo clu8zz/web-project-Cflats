@@ -1,6 +1,7 @@
 <?php
 //include 'register.php';
 session_start();
+header('Content-type: text/html; charset=utf-8'); 
 if(isset($_SESSION['firstname'])===FALSE&&isset($_SESSION['lastname'])===FALSE )
 {
  header('location:login.html');;
@@ -20,27 +21,36 @@ $servername = getenv('IP');
          if ($db->connect_error) {
         die("Connection failed: " . $db->connect_error);
          } 
- $first_holder='no-image.png';
-  $second_holder='no-image.png';
-   $third_holder='no-image.png';
+         
+
    $id=$_SESSION['user_id'];
  $sql = "SELECT `image` from images WHERE id=$id ";
+ $sql_listing = "SELECT price,location,telephone,single_shared,sep_all,uniqueid FROM `flatinfo` WHERE id=$id ";
+ $price=[];
+ $location=[];
+ $telephone=[];
+ $accomodation=[];
+ $sep_all=[];
+ $unique=[];
+  $listing_query=$db->query($sql_listing);
+  $num_rows=mysqli_num_rows($listing_query);
+ 
+ $iter=0;
+ while ($row=mysqli_fetch_row($listing_query))
+    {
+     $price[$iter]=$row[0];
+      $location[$iter]=$row[1];
+       $telephone[$iter]=$row[2];
+        $accomodation[$iter]=$row[3];
+         $sep_all[$iter]=$row[4];
+          $unique[$iter]=$row[5];
+     $iter++;
+    }
+
     $query=$db->query($sql);
     $count=0;
- while ($row=mysqli_fetch_row($query))
-    {
-   ($test[$count]=$row[0]);
-   $count++;
-    }
-    if($test[0]!=null){
-     $first_holder=$test[0];
-    }
-     if($test[1]!=null){
-     $second_holder=$test[1];
-    }
-     if($test[2]!=null){
-     $third_holder=$test[2];
-    }
+ 
+   
     
   // echo $third_holder;
 ?>
@@ -55,34 +65,50 @@ $servername = getenv('IP');
         <link href="../../css/dropzone.css" type="text/css" rel="stylesheet" />
          <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Indie+Flower"/>
          <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"/>
-        
+        <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css"/>
-           <script src="dropzone.js"></script>
+           
 
       
          
     </head>
     <body>
+     <div class="container-fluid">
      
      <!--MODAL-->
-     <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-  <div class="modal-dialog modal-sm">
-   
-    <div class="modal-content">
-    <span id="modal-title" ></span>
-     <div class="progress"></div>
-    </div>
-  </div>
+    <div id="openModal" class="modalDialog">
+	<div>
+		<a href="#close" title="Close" class="close"><span class="glyphicon glyphicon-remove"></span></a>
+		<div class="modalHeader"><h2>Just a bit more...</h2></div>
+		<div class="pad">Price</div>
+	<div class="input-group pad">
+  <span class="input-group-addon">$</span>
+  <input type="text" class="form-control" name="mprice" id="mprice">
+  <span class="input-group-addon">.00</span>
+</div>
+	<div class="pad">Accomodation</div>
+
+<select id="marker-details" name="marker-details" class="pad">
+     <option value="Single">Single</option>
+      <option value="Shared">Shared</option>
+       <option value="Single and Shared">Single and Shared</option>
+      
+  </select>
+  <br>
+
+  <div class="pad"> <button class="btn btn-default pad" id="coords">Save</button></div>
+ 
+		</div>
 </div>
      <!--END OF MODAL-->
      
      
      
+ 
      
-     
-        <div class="container-fluid">
+        <div>
        <div id="navigation" class="navbar navbar-inverse ">
-	      <div class="fluid-container">
+	      <div class="container-fluid">
 	        <div class="navbar-header">
 	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse1">
 	            <span class="icon-bar"></span>
@@ -129,29 +155,49 @@ $servername = getenv('IP');
 	      </div>
 	    </div>
 	    
-	    
-<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample" id="listings">
-  Current Listings
+	    <div class="continer">
+	     <div class="row">
+	      <div class="col-lg-6 col-sm-6">
+<button class="btn btn-default listings" id="outline" data-toggle="collapse" data-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
+  View current listings
 </button>
+</div>
+ <div class="col-lg-6 col-sm-6">
+<span class="floater"><button class="plus"><span class="glyphicon glyphicon-plus"></span></button><span id="add">Add room</span></span>
+</div>
+</div>
+</div>
 <br>
-<div class="collapse" id="collapseExample">
-  <div class="well">
-  hello this is some text
+<br>
+<br>
+
+     
+           
+
+
+	
+</div>
+               <div class="alert alert-warning" id="warn" role="alert"> <center><h3>All fields are required!</h3></center></div>
+             
+              
+   <div class="container-fluid">
+	    <div class="row" id="bg">
+         <div class="col-sm-6 col-md-4 col-lg-4"><span></span></div>  
+         
+         
+        
+           
+    <div class="col-sm-6 col-md-4 col-lg-4 container" id="container">
+     <div class="progress">
+  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+   
   </div>
 </div>
-
-	    <div class="row">
-              
-             <!-- <div class="col-lg-3 col-md-11 col-xs-11">
-                  
-                   <form action="upload.php" class="dropzone" id="dzone"></form>
-              </div>-->
-    <div class="col-sm-6 col-md-4 col-lg-4 ">
-        <div class="thumbnail"><a href="#"><img src="<?php echo "../../uploads/".$first_holder;?>" alt="..."></a>
-          <br>
-         <form class="form-horizontal upload" method="post" action="upload.php">
+        <div class="thumbnail">
+        
+         <form class="form-horizontal upload" method="post" action="upload.php" id="save">
   <div class="form-group">
-    <label for="price" class="col-sm-2 control-label">Price:</label>
+    <label for="price" class="col-sm-2 control-label ">Price:</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="price" placeholder="price" name="price">
     </div>
@@ -200,157 +246,43 @@ $servername = getenv('IP');
     <span>Upload Photo</span>
     <input type="file" class="upload" name="upload" />
 </div>
-      <button type="submit" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-sm">Save</button>
+      <button type="submit" class="btn btn-default">Save</button>
     </div>
   </div>
 </form>
-             </div>
-              <div class="alert alert-success" role="alert" id="error"> Your data has been saved!</div>
+            
     </div>
     
+     </div>
+     </div>
+     <div class="alert alert-success" role="alert" id="error"> <center><h3>Your data has been saved!</h3></center></div>
+     </div>
+              
+    </div>
     
-    
-    <!--second form-->
- <div class="col-sm-6 col-md-4 col-lg-4 ">
-        <div class="thumbnail"><a href="#"><img src="<?php echo "../../uploads/".$second_holder;?>" alt="..."></a>
-        <br>
-         <form class="form-horizontal upload" method="post" action="upload.php">
-  <div class="form-group">
-    <label for="price" class="col-sm-2 control-label">Price:</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="price" placeholder="price" name="price">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Location:</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="location" placeholder="location" name="location">
-    </div>
-  </div>
-   <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Tele:</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="telephone" placeholder="1876-###-####" name="telephone">
-    </div>
-  </div>
-   <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Single:</label>
-    <div class="col-sm-10">
-     <input type="radio" name="single-shared" id="single" value="single">
-    </div>
-  </div>
+   <div class="collapse" id="collapseExample">
+  <div class="inner">
   
-   <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Shared:</label>
-    <div class="col-sm-10">
-     <input type="radio" name="single-shared" id="shared" value="shared">
-    </div>
   </div>
-   <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">All inclusive</label>
-    <div class="col-sm-10">
-     <input type="radio" name="sep-all" id="shared" value="All-inclusive">
-    </div>
-  </div>
-   <div class="form-group">
-    <label for="sep-util" class="col-sm-2 control-label">Separate Utilities</label>
-    <div class="col-sm-10">
-     <input type="radio" name="sep-all" id="shared" value="Utilities-seperate">
-    </div>
-  </div>
-  
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-         <div class="fileUpload btn btn-primary">
-    <span>Upload Photo</span>
-    <input type="file" class="upload" name="upload" />
 </div>
-      <button type="submit" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-sm">Save</button>
-    </div>
-  </div>
-</form>
-             </div>
-              <div class="alert alert-success" role="alert" id="error"> Your data has been saved!</div>
-    </div>    
-          <!--third form-->
-           <div class="col-sm-6 col-md-4 col-lg-4 ">
-        <div class="thumbnail"><a href="#"><img src="<?php echo  "../../uploads/".$third_holder;?>" alt="..."></a>
-          <br>
-         <form class="form-horizontal upload" method="post" action="upload.php">
-  <div class="form-group">
-    <label for="price" class="col-sm-2 control-label">Price:</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="price" placeholder="price" name="price">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Location:</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="location" placeholder="location" name="location">
-    </div>
-  </div>
-   <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Tele:</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="telephone" placeholder="1876-###-####" name="telephone">
-    </div>
-  </div>
-   <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Single:</label>
-    <div class="col-sm-10">
-     <input type="radio" name="single-shared" id="single" value="single">
-    </div>
-  </div>
-  
-   <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Shared:</label>
-    <div class="col-sm-10">
-     <input type="radio" name="single-shared" id="shared" value="shared">
-    </div>
-  </div>
-   <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">All inclusive</label>
-    <div class="col-sm-10">
-     <input type="radio" name="sep-all" id="shared" value="All-inclusive">
-    </div>
-  </div>
-   <div class="form-group">
-    <label for="sep-util" class="col-sm-2 control-label">Separate Utilities</label>
-    <div class="col-sm-10">
-     <input type="radio" name="sep-all" id="shared" value="Utilities-seperate">
-    </div>
-  </div>
-  
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-         <div class="fileUpload btn btn-primary">
-    <span>Upload Photo</span>
-    <input type="file" class="upload" name="upload" id="up" />
-</div>
-      <button type="submit" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-sm">Save</button>
-   
-    </div>
-  </div>
-  
-</form>
-
-             </div>
-             <div class="alert alert-success" role="alert" id="error"> Your data has been saved!</div>
-    </div>
     <!--end of forms-->
 
  
   
     <div class="col-lg-12 col-sm-6 jumbotron"><center><h1>Show us where you are Located</h1><br><h3>Tap on your community on the map below then share location of home!</h3></center></div>
     <div id="panel">
-      <button class="btn btn-default" id="coords">Share Location of home</button>
-      <div class="alert alert-info info" role="alert">...</div>
+     <div class="container-fluid"> <a href="#openModal"  class="btn btn-primary pad" >Continue</a></div>
       
+     
+      
+      <div class="alert alert-info info" role="alert">...</div>
+       <div id="map-canvas"  class="col-lg-12 col-sm-6"></div>
      </div>
-     <div id="map-canvas"  class="col-lg-12 col-sm-6"></div>
+    
       
 
      <!--<div id="footer"  class="col-lg-12 col-sm-6 jumbotron" ></div>-->
+        </div>
         </div>
         </div>
   
@@ -359,11 +291,134 @@ $servername = getenv('IP');
            <script src="../../js/jquery.liteuploader.js"></script>
              <script src="../../js/progressbar.min.js"></script>
          <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+         <script src="../../js/jquery.anoslide.js"></script>
          
        
         
 <style type="text/css">
-#listings{
+.pad{padding:5px;}
+select{
+     -webkit-appearance: menulist-button;
+     color:gray;
+   height: 30px;
+  
+  }
+/*MODAL CSS*/
+.glyphicon-remove{
+ color:white;
+}
+.modalDialog {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+	color:white;
+	border-radius:6px;
+		
+}
+
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+
+.modalDialog > div {
+	width: 305px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	
+	background:#222222;
+}
+
+.close {
+;
+	color: white;
+	line-height: 20px;
+	position: absolute;
+	right: 7px;
+	text-align: center;
+	top: 1px;
+	width: 20px;
+	text-decoration: none;
+	font-weight: bold;
+
+}
+
+
+/*MODAL CSS*/
+@media screen and (min-width: 700px) {
+   .floater{
+ float:right;
+}
+}
+
+.progress{
+ display:none;
+}
+.progress-bar {
+    -webkit-transition: none !important;
+    transition: none !important;
+}
+.ext{
+ font-size:16px;
+}
+#add{
+ font-family: 'Slabo 27px', serif;
+ font-size:25px;
+ color:#191919;
+ 
+ 
+ 
+ 
+}
+.plus{
+
+ width:40px;
+ height:40px;
+border-radius:40px;
+ background-color:#47AE47;
+ border:none;
+ color:white;
+ outline:none;
+}
+.glyphicon{
+ font-size:1.5em;
+}
+
+.thumbnail{
+ padding-top:70px;
+ padding-bottom:50px;
+ border-radius: 97px 0px 97px 0px;
+-moz-border-radius: 97px 0px 97px 0px;
+-webkit-border-radius: 97px 0px 97px 0px;
+border: 1px solid #191919;
+}
+.homes{
+ width:90%;
+ padding:40px;
+ border-radius: 97px 0px 97px 0px;
+-moz-border-radius: 97px 0px 97px 0px;
+-webkit-border-radius: 97px 0px 97px 0px;
+border: 1px solid #191919;
+}
+#container{
+display:none;
+
+}
+#outline{
+ outline:none;
+}
+.listings{
+ 
  color:white;
  background-color:#191919;
  padding:6px;
@@ -371,7 +426,7 @@ $servername = getenv('IP');
   font-size:15px;
   margin-bottom:6px;
   border-radius:15px;
-  outline:none;
+  
 }
 
 .info{
@@ -397,9 +452,9 @@ $servername = getenv('IP');
 #footer{
  background-color:#1E1E1E;
 }
-.thumbnail>a>img{
+.thumbnail>.carousel>ul>li>img{
  height:200px;
- width:300px;
+ width:400px;
 }
 .fileUpload input.upload {
     position: absolute;
@@ -432,7 +487,7 @@ $servername = getenv('IP');
       }
 
 </style>
-         
+        
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script>
 var map;
@@ -487,18 +542,37 @@ clearMarkers();
   
 }
 $("#coords").on('click',function(){
+ if($('#mprice').val()=="")
+{
+ $(".alert-info").removeClass("alert-info")
+    $(".info").addClass("alert-danger");
+ $(".info").html("<center>Please enter a price</center>");
+  $(".info").show();
+ return;
+}
+else if(isNaN($('#mprice').val()))
+{
+  $(".alert-info").removeClass("alert-info")
+    $(".info").addClass("alert-danger");
+ $(".info").html("<center>Price needs to be a numberic value</center>");
+  $(".info").show();
+ return;
+}
+coords['price']=$('#mprice').val();
+coords['option']=$('#marker-details').val();
  $.ajax({
   url:'coords.php',
   type:"POST",
   data:coords,
   success:function(response){
+   console.log(response);
   
    if(response==-1)
    {
     $(".alert-info").removeClass("alert-info")
     $(".info").addClass("alert-danger");
     
-    $(".info").html("<center>please select your location first</center>");
+    $(".info").html("<center> Select your location before attempting to save</center>");
     $(".info").show();
     console.log(coords['lat']);
      console.log(coords['long']);
@@ -545,8 +619,71 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 
     </script>
+ 
     
     <script type="text/javascript">
+    $('#outline').on('click',function(){
+     var container="<div class='container-fluid'><div class='row'>";
+      var endDiv="<div></div>";
+      var put="";
+
+     $.ajax({
+      url:'addhomes.php',
+      type:'POST',
+      success:function(response){
+       console.log(response);
+       if(response==-1)
+       {
+        $('.inner').html("<div><h3><center>You do not have any rooms listed as yet</center></h3></div>");
+       }
+       console.log(response[5]);
+      for(var x=0;x<response[0].length;x++){
+       put+='\
+  \
+  <div class="col-sm-6 col-md-4 col-lg-4">\
+    <div class="thumbnail">\
+      <img src="../../uploads/'+response[5][x]+'"'+'>\
+      <div class="caption">\
+        <h3>Thumbnail label</h3>\
+         <p>Price:' +response[0][x]+'</p>\
+         <p>Location:' +response[1][x]+'</p>\
+         <p>Telephone:' +response[2][x]+'</p>\
+         <p>Accomodation:' +response[3][x]+'</p>\
+         <p>Rent type:' +response[4][x]+'</p>\
+      </div>\
+    </div>\
+  </div>\
+\
+  ';
+      }
+      
+      $('.inner').html(container+put+endDiv);
+      }
+     })
+     
+    });
+      var count=0;
+      
+    $(".plus").on('click',function(){
+     $('#error').hide();
+      $('#warn').fadeOut('slow')
+     $('.progress').hide();
+     if(count==0)
+     {
+       $('#container').fadeIn('slow');
+     }
+     else if((count%2)==0)
+     {
+      $('#container').fadeIn('slow');
+     }
+     else
+     {
+       $('#container').fadeOut('slow');
+     }
+     count++;
+    // $('#error').hide();
+     
+    });
  $(".upload").mousedown(function(){
 
 $('.upload').liteUploader({
@@ -571,10 +708,18 @@ $(this).find('[name]').each(function(index, val){
 })
 
 if(valid['price']==""||valid['location']==""||valid['telephone']==""||	$('input[name=single-shared]:checked', 'form.upload').val()==undefined||$('input[name=sep-all]:checked', 'form.upload').val()==undefined){
-$("#modal-title").html("<center><h3>All fields are required!</h3></center>")
-		 $(".progress").hide();
+
+
+$('#warn').show();
  return false;
 }
+var regex = /^(\([0-9]{3}\)|[0-9]{3}-)[0-9]{3}-[0-9]{4}$/;
+if (regex.test(valid['telephone'])) {
+       console.log("success")
+    } 
+ if(isNaN(Number(valid['price']))){
+  
+ }
 
 	var component=$(this);
 	var url=component.attr('action'),
@@ -606,37 +751,20 @@ data['sep-all']=sep_all;
 		type:type,
 		data:data,
 		success: function(response){
-		 console.log(response);
-		 $("#modal-title").html("<center><h3>Your information is being submitted! do not resubmit the form!</h3></center>")
-		 $(".progress").show();
-	  		var line = new ProgressBar.Line('.progress', {
-    color: '#FCB03C',
-    duration: 3000,
-     strokeWidth: 5,
-    trailWidth: 3,
-    text: {
-        value: '0'+'%',
-          color: 'black',
-    },
-    step: function(state, bar) {
-        bar.setText((bar.value() * 100).toFixed(0)+'%');
-    }
+		
+		 
+  	$('#warning').hide();
+		 $(".container").fadeOut(5500);
+		 $('#error').fadeIn(5500);
+		 $('.progress').show();
+		  $(".progress-bar").animate({
+    width: "100%"
+}, 3300);
+document.getElementById("save").reset();
 
-});
-
-line.animate(1.0);
-
-	  
-	   
-	    if($(".alert").hasClass("alert-success"))
-	    {
-	     	$(".alert-success").fadeIn(1000);
-	    }
-	    else
-	    {
-	     $(".alert").addClass("alert-success");
-	     	$(".alert-success").fadeIn(1000);
-	    }
+		
+	/*	$('form.upload').trigger("reset");*/
+	 
 		}
 	});
 	return false;

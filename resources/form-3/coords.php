@@ -18,9 +18,11 @@ $servername = getenv('IP');
          $id=$_SESSION['user_id'];
          $lat=$_POST['lat'];
          $long=$_POST['long'];
+         $price=$_POST['price'];
+         $accomodation=$_POST['option'];
          if($lat!==null|| $long!==null)
          {
-            $sql = "INSERT INTO `Users`.`coords` (`id`, `latitude`, `longitude`) VALUES ('$id', '$lat','$long');";
+            $sql = "INSERT INTO `Users`.`coords` (`id`, `latitude`, `longitude`,`price`, `accomodatin`) VALUES ('$id', '$lat','$long',$price,'$accomodation');";
             if($db->query($sql)===TRUE)
              {
              echo 1;
