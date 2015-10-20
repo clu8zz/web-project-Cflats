@@ -163,7 +163,6 @@ $servername = getenv('IP');
 </button>
 </div>
  <div class="col-lg-6 col-sm-6">
-<span class="floater"><button class="plus"><span class="glyphicon glyphicon-plus"></span></button><span id="add">Add room</span></span>
 </div>
 </div>
 </div>
@@ -269,9 +268,19 @@ $servername = getenv('IP');
 
  
   
-    <div class="col-lg-12 col-sm-6 jumbotron"><center><h1>Show us where you are Located</h1><br><h3>Tap on your community on the map below then share location of home!</h3></center></div>
+    <div class="col-lg-12 col-sm-6 jumbotron"><center>
+        <button class="plus btn btn-success btn-lg"><span class="plustext">Add new room</span></button>
+
+     <h1>Show us where you are Located</h1>
+     <h3>(optional)</h3>
+    
+    <br>
+    
+    <h3>Tap on your community on the map below then share location of home!</h3></center>
+    
+    </div>
     <div id="panel">
-     <div class="container-fluid"> <a href="#openModal"  class="btn btn-primary pad" >Continue</a></div>
+     <div class="container-fluid"> <a href="#openModal"  class="btn btn-primary pad" >Share</a></div>
       
      
       
@@ -296,6 +305,10 @@ $servername = getenv('IP');
        
         
 <style type="text/css">
+/*.plustext{
+ font-size:50px;
+}*/
+
 .pad{padding:5px;}
 select{
      -webkit-appearance: menulist-button;
@@ -355,10 +368,11 @@ select{
 
 
 /*MODAL CSS*/
-@media screen and (min-width: 700px) {
+@media screen and (max-width: 1024px) {
    .floater{
  float:right;
 }
+
 }
 
 .progress{
@@ -380,19 +394,14 @@ select{
  
  
 }
-.plus{
+button:focus {outline:0 !important;}
+.jumbotron{
+ background-color:white;
+}
+.glyphicon-plus{
+ font-size:2em;
+}
 
- width:40px;
- height:40px;
-border-radius:40px;
- background-color:#47AE47;
- border:none;
- color:white;
- outline:none;
-}
-.glyphicon{
- font-size:1.5em;
-}
 
 .thumbnail{
  padding-top:70px;
@@ -487,9 +496,10 @@ display:none;
       }
 
 </style>
-        
+         <script type="text/javascript"  src="assets/js/jquery.backstretch.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
     <script>
+    
 var map;
 var markers = [];
 var coords={};
@@ -554,7 +564,7 @@ else if(isNaN($('#mprice').val()))
 {
   $(".alert-info").removeClass("alert-info")
     $(".info").addClass("alert-danger");
- $(".info").html("<center>Price needs to be a numberic value</center>");
+ $(".info").html("<center>Price needs to be a numeric value</center>");
   $(".info").show();
  return;
 }
@@ -571,7 +581,7 @@ coords['option']=$('#marker-details').val();
    {
     $(".alert-info").removeClass("alert-info")
     $(".info").addClass("alert-danger");
-    
+     $(".modalDialog").fadeOut('slow');
     $(".info").html("<center> Select your location before attempting to save</center>");
     $(".info").show();
     console.log(coords['lat']);
@@ -579,6 +589,7 @@ coords['option']=$('#marker-details').val();
    }
    else if(response==1)
    {
+    $(".modalDialog").fadeOut('slow');
      $(".info").addClass("alert-info");
      $(".info").removeClass("alert-danger")
      $(".alert-info").html("<center>The location of your home has been saved!</center>");
@@ -696,6 +707,7 @@ $('.upload').liteUploader({
  }); 
  
 $("form.upload").on('submit',function(){
+ console.log($('.upload').val());
  ///$(".spinner-loader").delay(5000).fadeOut('slow');
  var validator=true;
  var valid={};
@@ -708,7 +720,6 @@ $(this).find('[name]').each(function(index, val){
 })
 
 if(valid['price']==""||valid['location']==""||valid['telephone']==""||	$('input[name=single-shared]:checked', 'form.upload').val()==undefined||$('input[name=sep-all]:checked', 'form.upload').val()==undefined){
-
 
 $('#warn').show();
  return false;

@@ -16,20 +16,26 @@ $servername = getenv('IP');
         
          } 
          
-        $sql = "SELECT latitude,longitude FROM `coords` WHERE 1 LIMIT 0, 30 ";
+        $sql = "SELECT latitude,longitude,price,accomodation FROM `coords`";
         $query=$db->query($sql);
         $count=0;
         $latitude=[];
         $longitude=[];
+        $price=[];
+        $accomodation=[];
         $coordsContainer=[];
        while($row=mysqli_fetch_row($query))
        {
            $latitude[$count]=$row[0];
            $longitude[$count]=$row[1];
+           $price[$count]=$row[2];
+           $accomodation[$count]=$row[3];
            $count++;
        }
        $coordsContainer[0]=$latitude;
        $coordsContainer[1]=$longitude;
+       $coordsContainer[2]=$price;
+       $coordsContainer[3]=$accomodation;
        header('Content-Type: application/json');
         echo json_encode($coordsContainer);
        

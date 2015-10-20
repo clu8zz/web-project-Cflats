@@ -38,7 +38,7 @@ $content_telephone=[];
 $content_unique=[];
 
 
-if (isset($toprange)&&isset($bottomrange)&&isset($vicinity)&&isset($accomodation))
+if (!empty($toprange)&&!empty($bottomrange)&&!empty($vicinity)&&!empty($accomodation))
 {
   
 
@@ -160,106 +160,28 @@ else{
                     </form>
                 </div>
                 <!--END OF FILTER-->
-                
+               <?php
+              
+               
+               for($p=0;$p<$num;$p++)
+               {
+                   echo '<div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="thumbnail">'.'
+                          <img src="'.'../../uploads/'.$images_holder[$p].'" alt="...">
+                          <div class="caption">
+                            <h3><span class="price">$'.$content_price[$p].'</span></h3>
+                            <p><span class="titled">Location: '.$content_location[$p].'</span></p>
+                             <p><span class="titled">Accomodation: '.$content_accomodation[$p].' </span></p>
+                              <p><span class="titled">Telephone: '.$content_telephone[$p].'</span></p>
+                          </div>
+                        </div>
+                      </div>';
+               }
+               ?>
                 <!--The other side-right side, content and stuff-->
-                <div class="col-lg-9 col-sm-6 ">
-                    <div class="row">
-                      <div class="col-sm-6 col-md-4 col-lg-4">
-                        <div class="thumbnail">
-                          <img src="../images/no-image.png" alt="...">
-                          <div class="caption">
-                            <h3><span class="price">$<?php echo $content_price[2]?></span></h3>
-                            <p><span class="titled">Location:</span></p>
-                             <p><span class="titled">Accomodation: </span></p>
-                              <p><span class="titled">Telephone: </span></p>
-                          </div>
-                        </div>
-                      </div>
-                       <div class="col-sm-6 col-md-4 col-lg-4">
-                        <div class="thumbnail">
-                          <img src="../images/no-image.png" alt="...">
-                          <div class="caption">
-                            <h3><span class="price">$</span></h3>
-                            <p><span class="titled">Location:</span></p>
-                             <p><span class="titled">Accomodation: </span></p>
-                              <p><span class="titled">Telephone: </span></p>
-                          </div>
-                        </div>
-                      </div>
-                       <div class="col-sm-6 col-md-4 col-lg-4">
-                        <div class="thumbnail">
-                          <img src="../images/no-image.png" alt="...">
-                          <div class="caption">
-                            <h3><span class="price">$</span></h3>
-                            <p><span class="titled">Location:</span></p>
-                             <p><span class="titled">Accomodation: </span></p>
-                              <p><span class="titled">Telephone: </span></p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                 <div class="col-sm-6 col-md-4 col-lg-4">
-                        <div class="thumbnail">
-                          <img src="../images/no-image.png" alt="...">
-                          <div class="caption">
-                            <h3><span class="price">$</span></h3>
-                            <p><span class="titled">Location:</span></p>
-                             <p><span class="titled">Accomodation: </span></p>
-                              <p><span class="titled">Telephone: </span></p>
-                          </div>
-                        </div>
-                      </div>
-                       <div class="col-sm-6 col-md-4 col-lg-4">
-                        <div class="thumbnail">
-                          <img src="../images/no-image.png" alt="...">
-                          <div class="caption">
-                            <h3><span class="price">$</span></h3>
-                            <p><span class="titled">Location:</span></p>
-                             <p><span class="titled">Accomodation: </span></p>
-                              <p><span class="titled">Telephone: </span></p>
-                          </div>
-                        </div>
-                      </div>
-                       <div class="col-sm-6 col-md-4 col-lg-4">
-                        <div class="thumbnail">
-                          <img src="../images/no-image.png" alt="...">
-                          <div class="caption">
-                            <h3><span class="price">$</span></h3>
-                            <p><span class="titled">Location:</span></p>
-                             <p><span class="titled">Accomodation: </span></p>
-                              <p><span class="titled">Telephone: </span></p>
-                          </div>
-                        </div>
-                      </div>
-            </div>
-        </div>
-       <?php
-      
-$pagi_added;
-$previous='  <li>
-      <a href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>';
-$next='
-    <li>
-      <a href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>';
-for($x=0;$x<5;$x++)
-{
-   echo 
-  '<ul class="pagination">
-  '.
-    '<li><a href="#">'.$x.'</a></li>
-    
-  </ul>';
-}
-       ?>
+               </div>
+               </div>
+
     </body>
     <style type="text/css">
         .filter-style{
@@ -283,6 +205,7 @@ for($x=0;$x<5;$x++)
         }
         .titled{
    font-family: 'Oswald', sans-serif;
+   font-size:20px;
  }
         
     </style>

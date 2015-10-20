@@ -22,7 +22,7 @@ $servername = getenv('IP');
          $accomodation=$_POST['option'];
          if($lat!==null|| $long!==null)
          {
-            $sql = "INSERT INTO `Users`.`coords` (`id`, `latitude`, `longitude`,`price`, `accomodatin`) VALUES ('$id', '$lat','$long',$price,'$accomodation');";
+            $sql = "INSERT INTO `Users`.`coords` (`id`, `latitude`, `longitude`,`price`, `accomodation`) VALUES ('$id', '$lat','$long',$price,'$accomodation');";
             if($db->query($sql)===TRUE)
              {
              echo 1;

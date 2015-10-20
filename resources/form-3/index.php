@@ -89,26 +89,26 @@ $servername = getenv('IP');
     <div class="container">
      <div class="row container-fluid">
        
-        <div class=" col-lg-4"><center><span></span></center></div>
-        <form action="search.php" method="GET" class="submitter">
-     <div class="col-lg-4 filter-label col-sm-3 col-xs-3"><center><span>Filter</span></center></div>
-      <div class="col-lg-4"><center><span></span></center></div>
+            <div class=" col-lg-4"><center><span></span></center></div>
+            <form action="search.php" method="GET" class="submitter">
+            <div class="col-lg-4 filter-label col-sm-3 col-xs-3"><center><span>Filter</span></center></div>
+            <div class="col-lg-4"><center><span></span></center></div>
        
      </div>
      
       
       
       
-    <div class="container-fluid filter">
+     <div class="container-fluid filter">
           <div class="row">
-  <div class="col-lg-5 col-sm-6">
-    <div class="input-group">
-      <span class="input-group-addon">
-        $
-      </span>
-      <input type="text" class="form-control" placeholder="Price range" id="top-range" name="toprange">
-    </div><!-- /input-group -->
-  </div>
+    <div class="col-lg-5 col-sm-6">
+          <div class="input-group">
+          <span class="input-group-addon"> $  </span>
+       
+    
+          <input type="text" class="form-control" placeholder="Price range" id="top-range" name="toprange">
+          </div><!-- /input-group -->
+      </div>
   <!-- /.col-lg-6 -->
   <div class="col-lg-2 col-sm-6">  <span class="to"><center>TO</center></span></div>
 
@@ -198,7 +198,7 @@ $servername = getenv('IP');
     </div>
   </div>
   
-  
+
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
       <img src=<?php echo "../../uploads/".$images_holder[2]?>  alt="...">
@@ -223,7 +223,7 @@ $servername = getenv('IP');
     .alert{
         display:none;
     }
- .thumbnail>a>img{
+ .thumbnail>img{
  height:200px;
  width:300px;
 }
@@ -297,7 +297,7 @@ $servername = getenv('IP');
 // The user can then click an option to hide, show or delete the markers.
 var map;
 var markers = [];
-var coordsLat=[],coordsLong=[];
+var coordsLat=[],coordsLong=[],price=[],accomodation=[];
 var inn=0;
 
 
@@ -321,9 +321,9 @@ function initialize() {
   
 $(document).ready(function(){
     setTimeout(function(){
-    addMarker(coordsLat,coordsLong);
+    addMarker(coordsLat,coordsLong,price,accomodation);
     setAllMap(map);
-      
+      console.log(price);
     },1000)
 });
   // Adds a marker at the center of the map.
@@ -334,7 +334,7 @@ var image="../images/testmarkr.png"
 
 // Add a marker to the map and push to the array.
 
-function addMarker(coordsLat,coordsLong) {
+function addMarker(coordsLat,coordsLong,price,accomodation) {
    
    
    for(var i=0;i<coordsLat.length;i++)
@@ -344,7 +344,7 @@ function addMarker(coordsLat,coordsLong) {
     var marker = new google.maps.Marker({
     position: location,
     map: map,
-    infowindow:new google.maps.InfoWindow({content:""+i})
+    infowindow:new google.maps.InfoWindow({content:"<div>"+price[i]+"</div>"+accomodation[i]})
    
       
   });
@@ -366,6 +366,9 @@ $(document).ready(function(){
        success:function(response){
            coordsLat=response[0];
            coordsLong=response[1];
+           price=response[2];
+           accomodation=response[3];
+           
        }
     });
 });
