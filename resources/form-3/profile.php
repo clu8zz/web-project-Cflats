@@ -57,6 +57,7 @@ $servername = getenv('IP');
 <!DOCTYPE html>
 <html>
     <head>
+      <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
           <link rel="shortcut icon" href="../favicon2.ico">
         <title>CFlats- <?php echo($_SESSION['firstname']." ".$_SESSION['lastname']);?></title>
@@ -176,6 +177,9 @@ $servername = getenv('IP');
 
 	
 </div>
+<div class="col-lg-12 col-sm-6 jumbotron"><center>
+        <button class="plus btn btn-success btn-lg"><span class="plustext">Add new room</span></button>
+        </div>
                <div class="alert alert-warning" id="warn" role="alert"> <center><h3>All fields are required!</h3></center></div>
              
               
@@ -269,8 +273,7 @@ $servername = getenv('IP');
  
   
     <div class="col-lg-12 col-sm-6 jumbotron"><center>
-        <button class="plus btn btn-success btn-lg"><span class="plustext">Add new room</span></button>
-
+        
      <h1>Show us where you are Located</h1>
      <h3>(optional)</h3>
     
@@ -365,6 +368,10 @@ select{
 	font-weight: bold;
 
 }
+.thumbnail>img{
+ height:200px;
+ width:300px;
+}
 
 
 /*MODAL CSS*/
@@ -437,6 +444,17 @@ display:none;
   border-radius:15px;
   
 }
+ .titled{
+   font-family: 'Oswald', sans-serif;
+   font-size:15px;
+ }
+.price{
+        font-family: 'Oswald', sans-serif;
+          color:#33CCFF;
+        }
+ .title{
+   font-family: 'Oswald', sans-serif;
+ }
 
 .info{
  padding:5px;
@@ -633,6 +651,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
  
     
     <script type="text/javascript">
+   
     $('#outline').on('click',function(){
      var container="<div class='container-fluid'><div class='row'>";
       var endDiv="<div></div>";
@@ -642,33 +661,44 @@ google.maps.event.addDomListener(window, 'load', initialize);
       url:'addhomes.php',
       type:'POST',
       success:function(response){
+       
        console.log(response);
        if(response==-1)
        {
         $('.inner').html("<div><h3><center>You do not have any rooms listed as yet</center></h3></div>");
        }
-       console.log(response[5]);
+       console.log(response[6]);
       for(var x=0;x<response[0].length;x++){
+       console.log(response[6][x]);
        put+='\
   \
   <div class="col-sm-6 col-md-4 col-lg-4">\
     <div class="thumbnail">\
       <img src="../../uploads/'+response[5][x]+'"'+'>\
       <div class="caption">\
-        <h3>Thumbnail label</h3>\
-         <p>Price:' +response[0][x]+'</p>\
-         <p>Location:' +response[1][x]+'</p>\
-         <p>Telephone:' +response[2][x]+'</p>\
-         <p>Accomodation:' +response[3][x]+'</p>\
-         <p>Rent type:' +response[4][x]+'</p>\
+         <p><h3><span class="title">Price:</span> <span class="price">$' +response[0][x]+'</h3></span></p>\
+         <p><span class="titled">Location: ' +response[1][x]+'</span></p>\
+         <p><span class="titled">Telephone: ' +response[2][x]+'</span></p>\
+         <p><span class="titled">Accomodation: ' +response[3][x]+'</span></p>\
+         <p><span class="titled">Rent type: ' +response[4][x]+'</span></p>\
       </div>\
+       <button class="test btn btn-danger" name='+response[6][x]+'><i class="glyphicon glyphicon-trash "> Delete</i></button>\
+       <button class="test btn btn-info" name='+response[6][x]+'><i class="glyphicon glyphicon-pencil "> Update</i></button>\
+        <button class="test btn btn-success" name='+response[6][x]+'><i class="glyphicon glyphicon-save "> Save</i></button>\
     </div>\
   </div>\
 \
   ';
-      }
+      
       
       $('.inner').html(container+put+endDiv);
+      }
+       $('.save').on('click',function(){
+    console.log($('.test').attr('name'));
+    });
+    $('.test').on('click',function(){
+      console.log($(this).attr('name'));
+    })
       }
      })
      

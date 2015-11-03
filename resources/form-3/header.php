@@ -11,7 +11,7 @@
         <link rel="shortcut icon" href="../favicon2.ico">
         <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css"/>
-       
+       <link href='https://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css"/>
         <title>..title..</title>
       
@@ -29,7 +29,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="index.html"></a>
+					<a class="navbar-brand" href="index.php"></a>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="top-navbar-1">
@@ -39,12 +39,12 @@
 								
 							</span> 
 						<ul class="nav navbar-nav navbar-right">
-        					<li><a href="#">Login</a></li>
+        					<li><a href="login.html">Login</a></li>
        					</ul>
        					
        					
        						<ul class="nav navbar-nav navbar-right">
-        					<li><a href="#">Register</a></li>
+        					<li><a href="register.html">Register</a></li>
        					</ul>
 						</li>
 					</ul>

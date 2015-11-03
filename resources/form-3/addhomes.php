@@ -19,9 +19,9 @@ $servername = getenv('IP');
          
 
    $id=$_SESSION['user_id'];
- $sql = "SELECT `image` from images WHERE id=$id ";
+
  $sql_listing = "SELECT price,location,telephone,single_shared,sep_all,uniqueid FROM `flatinfo` WHERE id=$id ";
- $query=$db->query($sql);
+
  $images=[];
  $price=[];
  $location=[];
@@ -46,11 +46,16 @@ $servername = getenv('IP');
           $unique[$iter]=$row[5];
      $iter++;
     }
-    while($go=mysqli_fetch_row($query)){
-        $images[$img_iter]=$go[0];
-       
-        
+    while($img_iter<$num_rows)
+    {
+     $sql = "SELECT `image` from images WHERE uniqueid='$unique[$img_iter]' ";
+     $query=$db->query($sql);
+     $fetch=mysqli_fetch_row($query);
+     $images[$img_iter]=$fetch[0];
+     $img_iter++;
     }
+     
+   
   if($num_rows!=0)
   {
     $master_container[0]=$price;
@@ -59,6 +64,7 @@ $servername = getenv('IP');
     $master_container[3]=$accomodation;
     $master_container[4]=$sep_all;
     $master_container[5]=$images;
+    $master_container[6]=$unique;
     header('Content-Type: application/json');
     echo json_encode($master_container);
 }
