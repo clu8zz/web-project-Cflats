@@ -674,7 +674,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   \
   <div class="col-sm-6 col-md-4 col-lg-4">\
     <div class="thumbnail">\
-      <img src="../../uploads/'+response[5][x]+'"'+'>\
+      <img src="../../uploads/'+response[5][x]+'"'+' alt="image unavailable">\
       <div class="caption">\
          <p><h3><span class="title">Price:</span> <span class="price">$' +response[0][x]+'</h3></span></p>\
          <p><span class="titled">Location: ' +response[1][x]+'</span></p>\
