@@ -667,7 +667,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
        {
         $('.inner').html("<div><h3><center>You do not have any rooms listed as yet</center></h3></div>");
        }
-       console.log(response[6]);
+       
       for(var x=0;x<response[0].length;x++){
        console.log(response[6][x]);
        put+='\
@@ -682,9 +682,10 @@ google.maps.event.addDomListener(window, 'load', initialize);
          <p><span class="titled">Accomodation: ' +response[3][x]+'</span></p>\
          <p><span class="titled">Rent type: ' +response[4][x]+'</span></p>\
       </div>\
-       <button class="test btn btn-danger" name='+response[6][x]+'><i class="glyphicon glyphicon-trash "> Delete</i></button>\
-       <button class="test btn btn-info" name='+response[6][x]+'><i class="glyphicon glyphicon-pencil "> Update</i></button>\
-        <button class="test btn btn-success" name='+response[6][x]+'><i class="glyphicon glyphicon-save "> Save</i></button>\
+      <div class=container">\
+       <button class="test delete btn btn-danger" name='+response[6][x]+'><i class="glyphicon glyphicon-trash "> Delete</i></button>\
+       <button class="test update btn btn-info" name='+response[6][x]+'><i class="glyphicon glyphicon-pencil "> Update</i></button>\
+      </div>\
     </div>\
   </div>\
 \
@@ -693,12 +694,25 @@ google.maps.event.addDomListener(window, 'load', initialize);
       
       $('.inner').html(container+put+endDiv);
       }
-       $('.save').on('click',function(){
-    console.log($('.test').attr('name'));
-    });
-    $('.test').on('click',function(){
-      console.log($(this).attr('name'));
-    })
+      
+      
+       $('.test').on('click',function(){
+        var thisButton=$(this);
+        var unique=thisButton.attr("name");
+        var bool=thisButton.hasClass('update')
+        $.ajax({
+         url:'update_delete.php',
+         type:'POST',
+         data:{unique:unique,bool:bool},
+         success:function(response){
+          console.log(response);
+         }
+      
+        })
+      
+       });
+       
+ 
       }
      })
      
