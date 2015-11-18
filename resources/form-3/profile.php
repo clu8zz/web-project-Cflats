@@ -706,6 +706,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
          data:{unique:unique,bool:bool},
          success:function(response){
           console.log(response);
+        
          }
       
         })

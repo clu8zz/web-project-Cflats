@@ -23,15 +23,16 @@ $servername = getenv('IP');
   $delete_from_info="DELETE FROM `flatinfo` WHERE uniqueid='$unique'";
   $delete_image="DELETE FROM `images` WHERE uniqueid='$unique'";
   $test="DELETE FROM `images` WHERE id=23";
-  
-  if($bool='false')
+  echo $bool;
+ 
+  if($bool=='false')
   {
      
-  if($db->query($delete_from_info)==TRUE &&$db->query($delete_image)==TRUE)
-  {
-      echo ("entry deleted");
-  }
-  else{echo $unique;}
+          if($db->query($delete_from_info)==TRUE &&$db->query($delete_image)==TRUE)
+          {
+              echo ("entry deleted");
+          }
+          else{echo $unique;}
   }
   else{echo "not false";}
   
