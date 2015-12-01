@@ -9,9 +9,9 @@ echo $buffer;unset($_GET['no-name']);
 ?>
 
 <?php
-$servername = getenv('IP');
-         $name = getenv('C9_USER');
-         $dbpassword = "";
+$servername = "localhost";
+         $name = "root";
+         $dbpassword = "620070733";
          $database = "Users";
          $dbport = 3306;
         

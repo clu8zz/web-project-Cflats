@@ -19,7 +19,7 @@ class Registration{
          $dbport = 3306;
         
         // Create connection
-       $db = new mysqli($servername, $name, $dbpassword, $database, $dbport);
+       $db = new mysqli($servername, $name, $dbpassword, $database);
 
     
 

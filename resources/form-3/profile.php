@@ -6,9 +6,9 @@ if(isset($_SESSION['firstname'])===FALSE&&isset($_SESSION['lastname'])===FALSE )
 {
  header('location:login.html');;
 }
-$servername = getenv('IP');
-         $name = getenv('C9_USER');
-         $dbpassword = "";
+$servername = "localhost";
+         $name = "root";
+         $dbpassword = "620070733";
          $database = "Users";
          $dbport = 3306;
         

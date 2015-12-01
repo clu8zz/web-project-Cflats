@@ -14,7 +14,7 @@ $servername = "localhost";
          $dbport = 3306;
         
         // Create connection
-       $db = new mysqli($servername, $name, $dbpassword);
+       $db = new mysqli($servername, $name, $dbpassword,$database);
 
     
 
