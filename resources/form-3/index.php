@@ -7,14 +7,14 @@ $buffer=str_replace("..title..","Campus Flats",$buffer);
 echo $buffer;
 
 
-$servername = getenv('IP');
-         $name = getenv('C9_USER');
-         $dbpassword = "";
+$servername = "localhost";
+         $name = "root";
+         $dbpassword = "620070733";
          $database = "Users";
          $dbport = 3306;
         
         // Create connection
-       $db = new mysqli($servername, $name, $dbpassword, $database, $dbport);
+       $db = new mysqli($servername, $name, $dbpassword);
 
     
 

@@ -1,14 +1,14 @@
 <?php
 session_start();
 
-$servername = getenv('IP');
+$servername = 'localhost';
          $name = getenv('C9_USER');
-         $dbpassword = "";
+         $dbpassword = "620070733";
          $database = "Users";
          $dbport = 3306;
         
         // Create connection
-       $db = new mysqli($servername, $name, $dbpassword, $database, $dbport);
+       $db = new mysqli($servername, $name, $dbpassword, $database);
 
     
 
